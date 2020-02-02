@@ -1,23 +1,46 @@
 #input: 8 bit two's complement
 
 def hex_2sComp_to_decimal(hex_val):
-    
-    if (int(hex_val, 16) < 128):
-        dec_val = int(hex_val, 16)
+
+    hex_vals = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f']
+
+    val_1 = hex_val[2]
+    val_2 = hex_val[3]
+
+    dec_val = 0
+
+    for i in range(len(hex_vals)):
+        if (val_1 == hex_vals[i]):
+            dec_val += 16*i
+            break
+
+    for i in range(len(hex_vals)):
+        if (val_2 == hex_vals[i]):
+            dec_val += i
+            break
+
+    if (dec_val < 128):
         comp = ~dec_val + 1
     else:
-        comp = 0xFF - int(hex_val, 16) + 1
-        
-    #print("Hex in:\t", hex_val, "comp:\t", comp) #debugging
+        comp = 0xFF - dec_val + 1
+
     return comp
 
-def decimal_to_hex(dec_val, nBits):
+def decimal_to_hex(dec_val):
+    hex_vals = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f']
 
-    hex_val = hex((dec_val + (1 << nBits)) % (1 << nBits))
+    if(dec_val < 0):
+        #handles negative values by converting them to positive equivalent
+        hex_val = 0xFF - abs(dec_val) + 1
 
-    #print("~~ Dec:\t", dec_val, "Hex:\t", hex_val) #debugging
+    val_1 = dec_val // 16
+    val_2 = dec_val % 16
+    hex_val = "0x" + hex_vals[val_1] + hex_vals[val_2]
+
     return hex_val
 
+
+#driver code below
 print("\n\nEXAMPLE CONVERSION: ")
 print("====================")
 
@@ -27,7 +50,7 @@ print("Hex (2s comp):\t", hex_val)
 dec_val = hex_2sComp_to_decimal(hex_val)
 print("Decimal:\t", dec_val)
 
-hex_val = decimal_to_hex(dec_val, 8)
+hex_val = decimal_to_hex(dec_val)
 print("Hex:\t\t", hex_val)
 
 print("\nAND BACK THE OTHER WAY:")
@@ -38,13 +61,13 @@ print("Hex (2s comp):\t", hex_val)
 dec_val = hex_2sComp_to_decimal(hex_val)
 print("Decimal:\t", dec_val)
 
-hex_val = decimal_to_hex(dec_val, 8)
+hex_val = decimal_to_hex(dec_val)
 print("Hex:\t\t", hex_val)
 
 
 print("\n\n0xFF+0x52+0x0A+0x1E=")
 
-vals = ["0xFF", "0x52", "0x0A", "0x1E"]
+vals = ["0xff", "0x52", "0x0a", "0x1e"]
 
 sum_prob4 = 0
 
@@ -52,4 +75,3 @@ for i in vals:
     sum_prob4 += hex_2sComp_to_decimal(i)
 
 print(sum_prob4)
-
