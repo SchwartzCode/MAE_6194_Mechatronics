@@ -1,7 +1,7 @@
 #input: 8 bit two's complement
 
 def hex_2sComp_to_decimal(hex_val):
-
+    #NOTE: This function is not case sensitive, I just preferred to stick with lower case
     hex_vals = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f']
 
     val_1 = hex_val[2]
@@ -10,12 +10,12 @@ def hex_2sComp_to_decimal(hex_val):
     dec_val = 0
 
     for i in range(len(hex_vals)):
-        if (val_1 == hex_vals[i]):
+        if (val_1.lower() == hex_vals[i]):
             dec_val += 16*i
             break
 
     for i in range(len(hex_vals)):
-        if (val_2 == hex_vals[i]):
+        if (val_2.lower() == hex_vals[i]):
             dec_val += i
             break
 
@@ -27,6 +27,7 @@ def hex_2sComp_to_decimal(hex_val):
     return comp
 
 def decimal_to_hex(dec_val):
+    #NOTE: This function is not case sensitive, I just preferred to stick with lower case
     hex_vals = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f']
 
     if(dec_val < 0):
