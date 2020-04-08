@@ -6,7 +6,7 @@
 //    A trail of four lights will "walk" its way across the LEDS,
 //    with each being separated from the adjacent lights by an off
 //    LED and progressing along the LEDS. The pattern resets once 
-//    all of the lights have traversed all the LEDs=
+//    all of the lights have traversed all the LEDs
 
 void setup() {
   DDRA = 0b11111111; //setting all pins to output

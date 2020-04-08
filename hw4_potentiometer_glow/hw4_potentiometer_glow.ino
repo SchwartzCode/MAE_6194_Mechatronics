@@ -2,11 +2,9 @@
 //    Author:   Jonathan Schwartz
 //    GWID:     G20740593
 //  ===========================================================
-//  PATTERN:
-//    A trail of four lights will "walk" its way across the LEDS,
-//    with each being separated from the adjacent lights by an off
-//    LED and progressing along the LEDS. The pattern resets once 
-//    all of the lights have traversed all the LEDs=
+//  Potentiometer Glow:
+//    Adjusting the potentiometer (value read in through pin A0)
+//    results in the lights glowing at different brightnesses
 
 const int pins[] = {2, 3, 4, 5, 6, 7, 8, 9};
 
