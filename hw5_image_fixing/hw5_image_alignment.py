@@ -44,6 +44,9 @@ for i in range(1,count):
 #        to work properly
 avg = np.array(sum / count).astype(np.uint8)
 
+# Saving averaged image as a jpeg file to the current directory
+cv2.imwrite(path + "averaged_image.jpg", avg)
+
 # Use the opencv library to show averaged image. The window is resized because it is
 # way too zoomed in otherwise.
 cv2.namedWindow('image',cv2.WINDOW_NORMAL)
